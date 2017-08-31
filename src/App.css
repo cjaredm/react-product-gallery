@@ -1,14 +1,240 @@
-html, body {
-  margin: 0;
-  height: 100%;
+html,
+body {
+    margin: 0;
+    height: 100%;
 }
 
 body {
-  font-family: "Source Sans Pro", serif;
+    font-family: "Source Sans Pro", serif;
+    background-color: #eceef3;
 }
 
-.welcome-message {
-  font-size: 18px;
-  text-align: center;
-  padding: 0 30px;
+
+/**** Header / Search Bar ****/
+
+.purpleBar {
+    background: #6363d8;
+    height: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin: 0 auto;
+}
+
+.bannerHead {
+    align-items: center;
+    background: #f8cb00;
+    height: 166px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.bannerHead h1 {
+    padding: 0 126px;
+    margin: 0;
+    color: white;
+    font-family: 'Source Sans Pro';
+    font-size: 36px;
+    color: #ffffff;
+    letter-spacing: 0;
+    line-height: 33px;
+    text-align: left;
+}
+
+.searchBar {
+    background: white url("https://www.traditionoflondonshop.com/images/store_design/search_icon_black.png") no-repeat 12px 14px;
+    background-size: 25px;
+    display: inline-block;
+    overflow: hidden;
+    border-color: none;
+    border-radius: 4px;
+    width: 661px;
+    height: 51px;
+    font-size: 18px;
+    color: rgba(123, 123, 123, 0.78);
+    letter-spacing: 0;
+    line-height: 31px;
+    text-align: left;
+    padding-left: 50px;
+}
+
+
+/**** Section: Store ****/
+
+.storeDisplay {
+    background-color: white;
+    display: flex;
+}
+
+
+/** Sidebar **/
+
+.sideBar {
+    margin: 100px;
+}
+
+
+/* Category List */
+
+.categoryList {
+    width: 120px;
+    padding: 0;
+    list-style: none;
+    color: #a8abaf;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.categoryList p {
+    font-family: 'Source Sans Pro';
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.categoryList__item {
+    padding: 5px 0;
+    margin: 0;
+}
+
+.categoryList__item:hover {
+    color: #f8cb00;
+}
+
+.selected {
+    color: #f8cb00;
+}
+
+
+/* Filter By Price */
+
+.sideBar__filterByPrice_inputs {
+    width: 166px;
+}
+
+.sideBar__filterbyPrice_input {
+    font-size: 12px;
+    border: .5px solid grey;
+    display: inline-block;
+    width: 50px;
+    height: 35px;
+    text-align: center;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.sideBar__filterbyPrice button {
+    display: inline-block;
+}
+
+
+/** Product Gallery **/
+
+.productGallery_categoryTitle {
+    padding-left: 14px;
+    font-size: 27px;
+    color: #2d2d2d;
+    letter-spacing: 0;
+    line-height: 31px;
+    text-align: left;
+}
+
+.productGallery ul {
+    padding: 0;
+}
+
+.productGallery__list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.productGallery__list_item {
+    background: #ffffff;
+    border: 1px solid #e4e4e4;
+    box-shadow: 0 4px 14px 7px rgba(121, 121, 121, 0.05);
+    border-radius: 4px;
+    width: 189px;
+    height: 350px;
+    margin: 14px;
+    text-align: center;
+}
+
+.productGallery__list_item:hover {
+    border: 2px solid #f8cb00;
+}
+
+.productGallery__list_item__name {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 18px;
+    color: #373738;
+    letter-spacing: 0;
+    text-align: center;
+    align-content: space-around;
+}
+
+.productGallery__list_item__price {
+    font-family: 'SourceSansPro-Semibold';
+    font-size: 20px;
+    color: #f8cb00;
+    letter-spacing: 0;
+    text-align: center;
+    align-content: space-around;
+}
+
+
+/**** Section: Modal overlay ****/
+
+.modal {
+    background: rgba(255, 255, 255, 0.86);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+
+.modal_box {
+    background: #ffffff;
+    box-shadow: 0 16px 34px 7px rgba(121, 121, 121, 0.10);
+    border-radius: 4px;
+    width: 860px;
+    height: 533px;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.modal_img {
+    margin: 25px;
+}
+
+.modal_info {
+    padding: 0 50px 0 25px;
+}
+
+.modal_name {
+    font-family: font-awesome;
+    font-size: 28px;
+    color: #373738;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.modal_price {
+    font-family: SourceSansPro-Bold;
+    font-size: 30px;
+    color: #f8cb00;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.modal_description {
+    font-family: font-awesome;
+    font-size: 16px;
+    color: #585858;
+    letter-spacing: 0;
+    line-height: 30px;
+    text-align: left;
 }
