@@ -76,10 +76,9 @@ export default class App extends Component {
               {categories[this.state.selectedCategory - 1]["name"]}
             </p>
             <ul className="productGallery__list">
-              {console.log(this.state.selectedCategory)}
               {products
                 .filter(
-                  product => product.categoryId === this.state.selectedCategory
+                  product => product.categoryId == this.state.selectedCategory
                 )
                 .map((product, index) =>
                   <li
