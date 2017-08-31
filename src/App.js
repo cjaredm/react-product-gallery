@@ -5,18 +5,49 @@ import { products, categories } from "./data";
 export default class App extends Component {
   state = {
     selectedCategory: 1,
-    productIndex: null
+    productID: null,
+    minPrice: 0,
+    maxPrice: 9999999999
   };
 
   handleCategoryClick = e => {
     this.setState({ selectedCategory: e.target.id });
   };
 
-  handleProductClick = index => {
-    this.setState({ productIndex: index });
+  handleFilterButton = () => {
+    let min = this.state.minPrice;
+    let max = this.state.maxPrice;
+
+    if (this.refs.minPrice.value === "") {
+      min = 0;
+      this.setState({
+        minPrice: min
+      });
+    } else {
+      min = this.refs.minPrice.value;
+      this.setState({
+        minPrice: this.refs.minPrice.value
+      });
+    }
+
+    if (this.refs.maxPrice.value === "") {
+      max = 9999999999;
+      this.setState({
+        maxPrice: max
+      });
+    } else {
+      max = this.refs.maxPrice.value;
+      this.setState({
+        maxPrice: max
+      });
+    }
   };
 
-  handleModalClose = () => this.setState({ productIndex: null });
+  handleProductClick = id => {
+    this.setState({ productID: id });
+  };
+
+  handleModalClose = () => this.setState({ productID: null });
 
   render() {
     return (
@@ -63,14 +94,21 @@ export default class App extends Component {
                 <input
                   type="text"
                   className="sideBar__filterbyPrice_input"
+                  ref="minPrice"
                   placeholder="$ Min"
                 />
                 <input
                   type="text"
                   className="sideBar__filterbyPrice_input"
+                  ref="maxPrice"
                   placeholder="$ Max"
                 />
-                <button className="filterButton">Go</button>
+                <button
+                  className="filterButton"
+                  onClick={this.handleFilterButton}
+                >
+                  Go
+                </button>
               </div>
             </div>
           </div>
@@ -84,10 +122,12 @@ export default class App extends Component {
                 .filter(
                   product => product.categoryId == this.state.selectedCategory
                 )
+                .filter(product => product.price >= this.state.minPrice)
+                .filter(product => this.state.maxPrice >= product.price)
                 .map((product, index) =>
                   <li
                     className="productGallery__list_item"
-                    onClick={() => this.handleProductClick(index)}
+                    onClick={() => this.handleProductClick(product.id)}
                     key={`product_${index}`}
                   >
                     <img src={product.images.medium} alt={product.name} />
@@ -102,26 +142,35 @@ export default class App extends Component {
             </ul>
           </div>
         </div>
-        {this.state.productIndex !== null &&
+        {this.state.productID !== null &&
           <div className="modal">
             <div className="modal_box">
               <span className="modal_exit" onClick={this.handleModalClose}>
                 &times;
               </span>
+
               <img
                 className="modal_img"
-                src={products[this.state.productIndex]["images"]["large"]}
+                src={products
+                  .filter(product => product.id == this.state.productID)
+                  .map(product => product.images.large)}
                 alt="something"
               />
               <div className="modal_info">
                 <p className="modal_name">
-                  {products[this.state.productIndex]["name"]}
+                  {products
+                    .filter(product => product.id == this.state.productID)
+                    .map(product => product.name)}
                 </p>
                 <p className="modal_price">
-                  ${products[this.state.productIndex]["price"]}
+                  ${products
+                    .filter(product => product.id == this.state.productID)
+                    .map(product => product.price)}
                 </p>
                 <p className="modal_description">
-                  {products[this.state.productIndex]["description"]}
+                  {products
+                    .filter(product => product.id == this.state.productID)
+                    .map(product => product.description)}
                 </p>
               </div>
             </div>
