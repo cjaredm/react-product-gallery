@@ -39,11 +39,15 @@ export default class App extends Component {
         <div className="storeDisplay">
           <div className="sideBar">
             <div className="sideBar__categories">
-              <p>ALL CATEGORIES</p>
+              <p className="sideBar_label">All Categories</p>
               <ul className="categoryList">
                 {categories.map((category, index) =>
                   <li
-                    className="categoryList__item"
+                    className={
+                      (this.state.selectedCategory == category.id &&
+                        "categoryList__item selected") ||
+                      "categoryList__item"
+                    }
                     id={category.id}
                     onClick={this.handleCategoryClick}
                     key={`category_${index}`}
@@ -54,19 +58,19 @@ export default class App extends Component {
               </ul>
             </div>
             <div className="sideBar__filterByPrice">
-              <p>FILTER BY PRICE</p>
+              <p className="sideBar_label">Filter By Price</p>
               <div className="sideBar__filterByPrice_inputs">
                 <input
                   type="text"
                   className="sideBar__filterbyPrice_input"
-                  placeholder="$Min"
+                  placeholder="$ Min"
                 />
                 <input
                   type="text"
                   className="sideBar__filterbyPrice_input"
-                  placeholder="$Max"
+                  placeholder="$ Max"
                 />
-                <button>Go</button>
+                <button className="filterButton">Go</button>
               </div>
             </div>
           </div>
@@ -100,7 +104,10 @@ export default class App extends Component {
         </div>
         {this.state.productIndex !== null &&
           <div className="modal">
-            <div className="modal_box" onClick={this.handleModalClose}>
+            <div className="modal_box">
+              <span className="modal_exit" onClick={this.handleModalClose}>
+                &times;
+              </span>
               <img
                 className="modal_img"
                 src={products[this.state.productIndex]["images"]["large"]}

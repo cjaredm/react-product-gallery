@@ -29,7 +29,7 @@ body {
 }
 
 .bannerHead h1 {
-    padding: 0 126px;
+    padding: 0 120px;
     margin: 0;
     color: white;
     font-family: 'Source Sans Pro';
@@ -45,9 +45,10 @@ body {
     background-size: 25px;
     display: inline-block;
     overflow: hidden;
-    border-color: none;
+    font-weight: lighter;
+    border: .5px solid white;
     border-radius: 4px;
-    width: 661px;
+    width: 600px;
     height: 51px;
     font-size: 18px;
     color: rgba(123, 123, 123, 0.78);
@@ -55,6 +56,7 @@ body {
     line-height: 31px;
     text-align: left;
     padding-left: 50px;
+    margin: 0 41px;
 }
 
 
@@ -80,7 +82,6 @@ body {
     padding: 0;
     list-style: none;
     color: #a8abaf;
-    font-weight: lighter;
     margin: 0;
 }
 
@@ -108,8 +109,16 @@ body {
 
 /* Filter By Price */
 
+.sideBar {
+    margin: 20px 45px 0 120px;
+}
+
+.sideBar_label {
+    text-transform: uppercase;
+}
+
 .sideBar__filterByPrice_inputs {
-    width: 166px;
+    width: 240px;
 }
 
 .sideBar__filterbyPrice_input {
@@ -123,8 +132,16 @@ body {
     border-radius: 5px;
 }
 
-.sideBar__filterbyPrice button {
+.filterButton {
+    border: 0 solid #f8cb00;
+    width: 100px;
+    height: 38px;
     display: inline-block;
+    background-color: #f8cb00;
+    border-radius: 5px;
+    font-weight: lighter;
+    color: #34282c;
+    cursor: pointer;
 }
 
 
@@ -158,6 +175,7 @@ body {
     height: 350px;
     margin: 14px;
     text-align: center;
+    position: relative;
 }
 
 .productGallery__list_item:hover {
@@ -170,7 +188,7 @@ body {
     color: #373738;
     letter-spacing: 0;
     text-align: center;
-    align-content: space-around;
+    margin: 40px 20px;
 }
 
 .productGallery__list_item__price {
@@ -179,7 +197,9 @@ body {
     color: #f8cb00;
     letter-spacing: 0;
     text-align: center;
-    align-content: space-around;
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
 }
 
 
@@ -204,6 +224,20 @@ body {
     display: flex;
     align-items: center;
     margin: auto;
+    position: relative;
+}
+
+.modal_exit {
+    position: absolute;
+    color: black;
+    font-size: 50px;
+    right: 15px;
+    top: 0px;
+}
+
+.modal_exit:hover {
+    cursor: pointer;
+    transform: scale(1.2);
 }
 
 .modal_img {
