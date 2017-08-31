@@ -1,0 +1,48 @@
+/**** Header / Search Bar ****/
+
+.purpleBar {
+    background: #6363d8;
+    height: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    margin: 0 auto;
+}
+
+.bannerHead {
+    align-items: center;
+    background: #f8cb00;
+    height: 166px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.bannerHead h1 {
+    padding: 0 120px;
+    margin: 0;
+    color: white;
+    font-family: 'Source Sans Pro';
+    font-size: 36px;
+    color: #ffffff;
+    letter-spacing: 0;
+    line-height: 33px;
+    text-align: left;
+}
+
+.searchBar {
+    background: white url("https://www.traditionoflondonshop.com/images/store_design/search_icon_black.png") no-repeat 12px 14px;
+    background-size: 25px;
+    display: inline-block;
+    overflow: hidden;
+    font-weight: lighter;
+    border: .5px solid white;
+    border-radius: 4px;
+    width: 600px;
+    height: 51px;
+    font-size: 18px;
+    color: rgba(123, 123, 123, 0.78);
+    letter-spacing: 0;
+    line-height: 31px;
+    text-align: left;
+    padding-left: 50px;
+    margin: 0 41px;
+}
