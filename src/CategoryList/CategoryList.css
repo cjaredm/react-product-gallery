@@ -1,0 +1,35 @@
+.sideBar {
+    margin: 100px;
+}
+
+
+/* Category List */
+
+.categoryList {
+    width: 120px;
+    padding: 0;
+    list-style: none;
+    color: #a8abaf;
+    margin: 0;
+}
+
+.categoryList p {
+    font-family: "Source Sans Pro";
+    font-size: 14px;
+    color: #000000;
+    letter-spacing: 0;
+    text-align: left;
+}
+
+.categoryList__item {
+    padding: 5px 0;
+    margin: 0;
+}
+
+.categoryList__item:hover {
+    color: #f8cb00;
+}
+
+.selected {
+    color: #f8cb00;
+}

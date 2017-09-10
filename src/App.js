@@ -1,109 +1,68 @@
 import React, { Component } from "react";
 import "./App.css";
 import { products, categories } from "./data";
-import BannerHead from "./bannerHead/bannerHead";
-import ProductGallery from "./store/productGallery/productGallery";
+import BannerHead from "./BannerHead/BannerHead";
+import CategoryList from "./CategoryList/CategoryList";
+import ProductGallery from "./store/ProductGallery/ProductGallery";
 
 export default class App extends Component {
   state = {
-    selectedCategory: 1,
+    selectedCategory: categories[0].id,
     productID: null,
     minPrice: 0,
-    maxPrice: 9999999999
+    maxPrice: 9999999999,
+    searchInput: ""
+  };
+
+  handleSearchChange = e => {
+    this.setState({ searchInput: e.currentTarget.value });
   };
 
   handleCategoryClick = e => {
-    this.setState({ selectedCategory: e.target.id });
+    this.setState({
+      selectedCategory: Number(e.target.id)
+    });
   };
 
-  handleFilterButton = () => {
-    let min = this.state.minPrice;
-    let max = this.state.maxPrice;
-
-    if (this.refs.minPrice.value === "") {
-      min = 0;
-      this.setState({
-        minPrice: min
-      });
+  handleMinPriceChange = e => {
+    if (e.currentTarget.value === "") {
+      this.setState({ minPrice: 0 });
     } else {
-      min = this.refs.minPrice.value;
-      this.setState({
-        minPrice: this.refs.minPrice.value
-      });
-    }
-
-    if (this.refs.maxPrice.value === "") {
-      max = 9999999999;
-      this.setState({
-        maxPrice: max
-      });
-    } else {
-      max = this.refs.maxPrice.value;
-      this.setState({
-        maxPrice: max
-      });
+      this.setState({ minPrice: e.currentTarget.value });
     }
   };
 
-  handleProductClick = id => {
-    this.setState({ productID: id });
+  handleMaxPriceChange = e => {
+    if (e.currentTarget.value === "") {
+      this.setState({ maxPrice: 9999999999 });
+    } else {
+      this.setState({ maxPrice: e.currentTarget.value });
+    }
   };
+
+  handleProductClick = id => this.setState({ productID: Number(id) });
 
   handleModalClose = () => this.setState({ productID: null });
 
   render() {
     return (
       <div className="page-wrapper">
-        <BannerHead />
+        <BannerHead
+          searchInput={this.state.searchInput}
+          onSearchChange={this.handleSearchChange}
+        />
 
         <div className="storeDisplay">
-          <div className="sideBar">
-            <div className="sideBar__categories">
-              <p className="sideBar_label">All Categories</p>
-              <ul className="categoryList">
-                {categories.map((category, index) =>
-                  <li
-                    className={
-                      (this.state.selectedCategory == category.id &&
-                        "categoryList__item selected") ||
-                      "categoryList__item"
-                    }
-                    id={category.id}
-                    onClick={this.handleCategoryClick}
-                    key={`category_${index}`}
-                  >
-                    {category.name}
-                  </li>
-                )}
-              </ul>
-            </div>
-
-            <div className="sideBar__filterByPrice">
-              <p className="sideBar_label">Filter By Price</p>
-              <div className="sideBar__filterByPrice_inputs">
-                <input
-                  type="text"
-                  className="sideBar__filterbyPrice_input"
-                  ref="minPrice"
-                  placeholder="$ Min"
-                />
-                <input
-                  type="text"
-                  className="sideBar__filterbyPrice_input"
-                  ref="maxPrice"
-                  placeholder="$ Max"
-                />
-                <button
-                  className="filterButton"
-                  onClick={this.handleFilterButton}
-                >
-                  Go
-                </button>
-              </div>
-            </div>
-          </div>
+          <CategoryList
+            categories={categories}
+            handleCategoryClick={this.handleCategoryClick}
+            handleFilterButton={this.handleFilterButton}
+            onMinPriceChange={this.handleMinPriceChange}
+            onMaxPriceChange={this.handleMaxPriceChange}
+          />
 
           <ProductGallery
+            getCategoryName={this.getCategoryName}
             selectedCategory={this.state.selectedCategory}
             products={products}
             categories={categories}

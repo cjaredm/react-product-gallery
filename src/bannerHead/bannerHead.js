@@ -1,7 +1,13 @@
 import React, { Component } from "react";
-import "./bannerHead.css";
+import PropTypes from "prop-types";
+import "./BannerHead.css";
 
 export default class BannerHead extends Component {
+  static propTypes = {
+    searchInput: PropTypes.string.isRequired,
+    onSearchChange: PropTypes.func.isRequired
+  };
+
   render() {
     return (
       <div className="bannerWrapper">
@@ -13,6 +19,8 @@ export default class BannerHead extends Component {
           </div>
           <div className="flexColumn">
             <input
+              value={this.props.searchInput}
+              onChange={this.props.onSearchChange}
               type="text"
               className="searchBar"
               placeholder="Search products by name"

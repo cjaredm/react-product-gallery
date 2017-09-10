@@ -36,7 +36,7 @@
 }
 
 .productGallery__list_item__name {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: "Source Sans Pro", sans-serif;
     font-size: 18px;
     color: #373738;
     letter-spacing: 0;
@@ -45,7 +45,7 @@
 }
 
 .productGallery__list_item__price {
-    font-family: 'SourceSansPro-Semibold';
+    font-family: "SourceSansPro-Semibold";
     font-size: 20px;
     color: #f8cb00;
     letter-spacing: 0;

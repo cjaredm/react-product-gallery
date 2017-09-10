@@ -1,7 +1,16 @@
 import React, { Component } from "react";
-import "./modal.css";
+import "./Modal.css";
 
 export default class Modal extends Component {
+  getSelectedProduct = products =>
+    products.filter(product => product.id === this.props.productID);
+
+  getProductImg = products => products.map(product => product.images.large);
+  getProductName = products => products.map(product => product.name);
+  getProductPrice = products => products.map(product => product.price);
+  getProductDescription = products =>
+    products.map(product => product.description);
+
   render() {
     return (
       <div className="modal">
@@ -12,26 +21,26 @@ export default class Modal extends Component {
 
           <img
             className="modal_img"
-            src={this.props.products
-              .filter(product => product.id == this.props.productID)
-              .map(product => product.images.large)}
-            alt="something"
+            src={this.getProductImg(
+              this.getSelectedProduct(this.props.products)
+            )}
+            alt="Product"
           />
           <div className="modal_info">
             <p className="modal_name">
-              {this.props.products
-                .filter(product => product.id == this.props.productID)
-                .map(product => product.name)}
+              {this.getProductName(
+                this.getSelectedProduct(this.props.products)
+              )}
             </p>
             <p className="modal_price">
-              ${this.props.products
-                .filter(product => product.id == this.props.productID)
-                .map(product => product.price)}
+              ${this.getProductPrice(
+                this.getSelectedProduct(this.props.products)
+              )}
             </p>
             <p className="modal_description">
-              {this.props.products
-                .filter(product => product.id == this.props.productID)
-                .map(product => product.description)}
+              {this.getProductDescription(
+                this.getSelectedProduct(this.props.products)
+              )}
             </p>
           </div>
         </div>
