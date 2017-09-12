@@ -4,18 +4,25 @@ import { shallow } from "enzyme";
 
 const minProps = {
   categories: [],
-  handleCategoryClick: function(){},
-  handleFilterButton: function(){},
-  onMinPriceChange: function(){},
-  onMaxPriceChange: function(){}
+  handleCategoryClick: jest.fn(),
+  onMinPriceChange: jest.fn(),
+  onMaxPriceChange: jest.fn()
 };
 
-test("CategoryList renders", () => {
-  expect(shallow(<CategoryList 
+const component = shallow(<CategoryList 
   categories={minProps.categories}
   handleCategoryClick={minProps.handleCategoryClick}
-  handleFilterButton={minProps.handleFilterButton}
   onMinPriceChange={minProps.onMinPriceChange}
   onMaxPriceChange={minProps.onMaxPriceChange}
-  />)).toHaveLength(1);
+  />);
+
+test("CategoryList renders", () => {
+  expect(component).toHaveLength(1);
+});
+
+test("Category click runs onClick function", () => {
+  const item = component.find('.categoryList__item').first();
+
+  item.simulate('click');
+  expect(minProps.handleCategoryClick).toHaveBeenCalled();
 });

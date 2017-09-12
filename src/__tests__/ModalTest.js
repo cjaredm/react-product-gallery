@@ -4,14 +4,22 @@ import { shallow } from "enzyme";
 
 const minProps = {
   productID: 1,
-  close: function(){},
+  close: jest.fn(),
   products: []
 };
 
-test("Modal renders", () => {
-  expect(shallow(<Modal 
+const component = shallow(<Modal 
   productID={minProps.productID} 
   close={minProps.close} 
-  products={minProps.products}/>))
-  .toHaveLength(1);
+  products={minProps.products}/>);
+
+test("Modal renders", () => {
+  expect(component).toHaveLength(1);
+});
+
+test("Exit Modal click runs onClick function", () => {
+  const item = component.find('.modal_exit');
+
+  item.simulate('click');
+  expect(minProps.close).toHaveBeenCalled();
 });
