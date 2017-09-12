@@ -20,7 +20,7 @@ export default class ProductGallery extends Component {
     return products.map((product, index) => (
       <li
         className="productGallery__list_item"
-        onClick={() => this.props.handleProductClick(product.id)}
+        onClick={() => {this.props.handleProductClick(product.id)}}
         key={`product_${index}`}
       >
         <img src={product.images.medium} alt={product.name} />

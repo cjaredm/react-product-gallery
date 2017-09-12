@@ -4,8 +4,8 @@ import "./BannerHead.css";
 
 export default class BannerHead extends Component {
   static propTypes = {
-    searchInput: PropTypes.string.isRequired,
-    onSearchChange: PropTypes.func.isRequired
+    searchInput: PropTypes.string,
+    searchFilter: PropTypes.func
   };
 
   render() {
@@ -20,7 +20,7 @@ export default class BannerHead extends Component {
           <div className="flexColumn">
             <input
               value={this.props.searchInput}
-              onChange={this.props.onSearchChange}
+              onChange={this.props.searchFilter}
               type="text"
               className="searchBar"
               placeholder="Search products by name"

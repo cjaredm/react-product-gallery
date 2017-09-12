@@ -11,11 +11,18 @@ export default class App extends Component {
     productID: null,
     minPrice: 0,
     maxPrice: 9999999999,
-    searchInput: ""
+    searchInput: "",
+    productList: products
   };
 
-  handleSearchChange = e => {
+  searchFilter = e => {
+
+    //Controlled and Uncontrolled things. But it seems pointless to update this as I can take it out and it will still do my search filter effectively.. Why do it?
     this.setState({ searchInput: e.currentTarget.value });
+
+    let productList = products.filter(product => product.name.toLowerCase().search(e.currentTarget.value.toLowerCase()) !== -1);
+    
+    this.setState({productList: productList});
   };
 
   handleCategoryClick = e => {
@@ -48,8 +55,8 @@ export default class App extends Component {
     return (
       <div className="page-wrapper">
         <BannerHead
+          searchFilter={this.searchFilter}
           searchInput={this.state.searchInput}
-          onSearchChange={this.handleSearchChange}
         />
 
         <div className="storeDisplay">
@@ -64,7 +71,7 @@ export default class App extends Component {
           <ProductGallery
             getCategoryName={this.getCategoryName}
             selectedCategory={this.state.selectedCategory}
-            products={products}
+            products={this.state.productList}
             categories={categories}
             minPrice={this.state.minPrice}
             maxPrice={this.state.maxPrice}

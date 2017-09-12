@@ -1,21 +1,23 @@
 import React from "react";
-import BannerHead from "../bannerHead/bannerHead";
+import BannerHead from "../BannerHead/BannerHead";
 import { shallow } from "enzyme";
 
-const minProps = {};
+const minProps = {
+
+};
 
 test("BannerHead renders", () => {
   expect(shallow(<BannerHead />)).toHaveLength(1);
 });
 
 test("Search bar allows input", () => {
-  const onSearchChange = jest.fn();
+  const searchFilter = jest.fn();
   const event = { currentTarget: { value: "whatever" } };
 
-  shallow(<BannerHead searchInput={""} onSearchChange={onSearchChange} />)
+  shallow(<BannerHead searchInput={""} searchFilter={searchFilter} />)
     .find(".searchBar")
     .simulate("change", event);
 
-  expect(onSearchChange).toHaveBeenCalled();
-  expect(onSearchChange).toHaveBeenCalledWith(event);
+  expect(searchFilter).toHaveBeenCalled();
+  expect(searchFilter).toHaveBeenCalledWith(event);
 });
