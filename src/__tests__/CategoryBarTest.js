@@ -3,13 +3,13 @@ import CategoryList from "../CategoryList/CategoryList";
 import { shallow } from "enzyme";
 
 const minProps = {
-  categories: [],
+  categories: [{name: "lame", id: "1"}, {name: "lame", id: "1"}, {name: "lame", id: "1"}, {name: "lame", id: "1"}],
   handleCategoryClick: jest.fn(),
   onMinPriceChange: jest.fn(),
   onMaxPriceChange: jest.fn()
 };
 
-const component = shallow(<CategoryList 
+const component = shallow(<CategoryList
   categories={minProps.categories}
   handleCategoryClick={minProps.handleCategoryClick}
   onMinPriceChange={minProps.onMinPriceChange}
@@ -21,8 +21,8 @@ test("CategoryList renders", () => {
 });
 
 test("Category click runs onClick function", () => {
-  const item = component.find('.categoryList__item').first();
+  const item = component.find('.categoryList__item').at(1);
 
   item.simulate('click');
-  expect(minProps.handleCategoryClick).toHaveBeenCalled();
+  expect(minProps.handleCategoryClick).toBeCalled();
 });

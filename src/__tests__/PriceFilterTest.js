@@ -20,7 +20,7 @@ test("Min input allows input", () => {
   const event = { currentTarget: { value: "500" } };
 
   component
-    .find(".sideBar__filterbyPrice_input").first()
+    .find(".sideBar__filterbyPrice_input").at(0)
     .simulate("change", event);
 
   expect(minProps.onMinPriceChange).toHaveBeenCalled();

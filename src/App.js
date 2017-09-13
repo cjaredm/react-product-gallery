@@ -69,7 +69,6 @@ export default class App extends Component {
           />
 
           <ProductGallery
-            getCategoryName={this.getCategoryName}
             selectedCategory={this.state.selectedCategory}
             products={this.state.productList}
             categories={categories}
