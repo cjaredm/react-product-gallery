@@ -15,6 +15,7 @@ export default class App extends Component {
     productList: products
   };
 
+
   searchFilter = e => {
 
     //Controlled and Uncontrolled things. But it seems pointless to update this as I can take it out and it will still do my search filter effectively.. Why do it?
