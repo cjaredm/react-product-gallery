@@ -1,3 +1,6 @@
+## (This was my technical project part of my PracticeGenius Interview 09/2017)
+
+
 # React Product Gallery
 
 For this project, you will build a product gallery using React. The finished product should look visually similar to that of the provided mock ups as well as satisfy the requirements described the in the specs below.
